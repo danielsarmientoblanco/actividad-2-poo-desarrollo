@@ -3,7 +3,7 @@ class Persona:
         self.nombre = nombre
         self.apellidos = apellidos
         self.numeroDocumentoIdentidad = numeroDocumentoIdentidad
-        self.añoN= añoNacimiento        
+        self.añoNacimiento = añoNacimiento        
         
     def MostrarDatos(self):
         print(f"Nombre = {self.nombre}")
