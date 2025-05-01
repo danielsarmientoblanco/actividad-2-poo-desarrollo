@@ -2,13 +2,13 @@ class Persona:
     def __init__(self, nombre, apellidos, numeroDocumentoIdentidad, añoNacimiento):
         self.nombre = nombre
         self.apellidos = apellidos
-        self.numeroDocumentoIdentidad = numeroDocumentoIdentidad
+        self.númeroDocumentoIdentidad = númeroDocumentoIdentidad
         self.añoNacimiento = añoNacimiento        
         
     def MostrarDatos(self):
         print(f"Nombre = {self.nombre}")
         print(f"Apellidos = {self.apellidos}")
-        print(f"Número de documento de identidad = {self.numeroDocumentoIdentidad}")
+        print(f"Número de documento de identidad = {self.númeroDocumentoIdentidad}")
         print(f"Año de nacimiento = {self.añoNacimiento}")
         print()
 
