@@ -1,8 +1,8 @@
 class Persona:
-    def __init__(self, nombre, apellidos, numeroDocumentoIdentidad, añoNacimiento):
+    def __init__(self, nombre, apellidos, númeroDocumentoIdentidad, añoNacimiento):
         self.nombre = nombre
         self.apellidos = apellidos
-        self.númeroDocumentoIdentidad = númeroDocumentoIdentidad
+        self.númeroDocumentoIdentidad= númeroDocumentoIdentidad
         self.añoNacimiento = añoNacimiento        
         
     def MostrarDatos(self):
