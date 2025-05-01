@@ -14,5 +14,5 @@ class Persona:
         
 persona1 = Persona("Pedro", "Pérez", "1053121010", 1998)
 persona2 = Persona("Luis", "León", "1053223344", 2001)
-        
-        
+persona1.MostrarDatos()
+persona2.MostrarDatos()
