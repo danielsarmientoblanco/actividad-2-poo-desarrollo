@@ -52,7 +52,7 @@ class TrianguloRectangulo:
         return float((self.base + self.altura + self.calcularHipotenusa()))
     
     def determinarTipoTriangulo(self):
-        if (self.base == self.altura and (self.base == self.calcularHipotenusa()) and (self.altura == self.calcularHipotenusa())):
+        if (self.base == self.altura) and (self.base == self.calcularHipotenusa()) and (self.altura == self.calcularHipotenusa())):
             print("Es un triángulo equilátero")
         
         elif (self.base != self.altura and (self.base!= self.calcularHipotenusa()) and (self.altura != self.calcularHipotenusa())):
