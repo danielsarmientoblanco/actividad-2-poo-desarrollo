@@ -1,68 +1,145 @@
 from enum import Enum
 
-class TipoCombustible(Enum):
-    gasolina = "Gasolina"
-    diesel = "Diésel"
+class tipoCom(Enum):
+    GASOLINA = "GASOLINA"
+    BIOETANOL = "BIOETANOL"
+    DIESEL = "DIESEL"
+    BIODIESEL = "BIODISESEL"
+    GAS_NATURAL = "GAS NATURAL"
 
-class TipoAutomovil(Enum):
-    compacto = "Compacto"
+class tipoA(Enum):
+    CIUDAD = "CIUDAD"
+    SUBCOMPACTO = "SUBCOMPACTO"
+    COMPACTO = "COMPACTO"
+    FAMILIAR = "FAMILIAR"
+    EJECUTIVO = "EJECUTIVO"
     SUV = "SUV"
 
-class Color(Enum):
-    negro = "negro"
-    azul = "azul"
+
+class tipoColor(Enum):
+    BLANCO = "BLANCO"
+    NEGRO = "NEGRO"
+    ROJO = "ROJO"
+    NARANJA = "NARANJA"
+    AMARILLO = "AMARILLO"
+    VERDE = "VERDE"
+    AZUL = "AZUL"
+    VIOLETA = "VIOLETA"
+    
 
 class Automovil:
-    def __init__(self, marca, modelo, motor, combustible, tipo, puertas, asientos, vmax, color,vactual):
+    def __init__(self, marca, modelo, motor, tipoCombustible, tipoAutomovil, numeroPuertas, cantidadAsientos, velocidadMax, color):
         self.marca = marca
         self.modelo = modelo
         self.motor = motor
-        self.combustible = combustible
-        self.tipo = tipo
-        self.puertas = puertas
-        self.asientos = asientos
-        self.vmax = vmax
+        self.tipoCombustible = tipoCombustible
+        self.tipoAutomovil = tipoAutomovil
+        self.numeroPuertas = numeroPuertas
+        self.cantidadAsientos = cantidadAsientos
+        self.velocidadMax = velocidadMax
         self.color = color
-        self.vactual = vactual
-
-    def getMarca(self): return self.marca #Llama valores encapsulados 
-    def getVelocidadActual(self): return self.vactual 
-
-    def setVelocidadMaxima(self, vmax): self.vmax = vmax #Cambia valores en el encapsulado 
-
-
-    def acelerar(self, inc):
-        if inc < 0 or self.vactual + inc > self.vmax:
-            print("No se puede acelerar.")
-        else:
-            self.vactual += inc
-        print(f"Velocidad actual: {self.vactual} km/h")
-    def desacelerar(self, dec):
-        if dec < 0 or self.vactual - dec < 0:
-            print("No se puede desacelerar.")
-        else:
-            self.vactual -= dec
-        print(f"Velocidad actual: {self.vactual} km/h")
-    def frenar(self):
-        self.vactual = 0
-        print("Vehículo frenado.")
+        self.velocidadActual = 0
     
-    def calcular_tiempo_llegada(self, distancia):
-        if self.vactual == 0:
-            print("Velocidad actual es cero.")
+
+    def getMarca(self):
+        return self.marca
+    
+    def getModelo(self):
+        return self.modelo
+
+    def getMotor(self):
+        return self.motor
+    
+    def getTipoCombustible(self):
+        return self.tipoCombustible
+    
+    def getTipoAutomovil(self):
+        return self.tipoAutomovil
+
+    def getNumeroPuertas(self):
+        return self.numeroPuertas
+
+    def getCantidadAsientos(self):
+        return self.cantidadAsientos
+    
+    def getVelocidadMax(self):
+        return self.velocidadMax
+    
+    def getColor(self, color):
+        self.color = color
+    
+    def getVelocidadActual(self):
+        return self.velocidadActual
+
+
+    def setMarca(self, marca):
+        self.marca = marca
+    
+    def setModelo(self, modelo):
+        self.modelo = modelo
+
+    def setMotor(self, motor):
+        self.motor = motor
+    
+    def setTipoCombustible(self, tipoCombustible):
+        self.tipoCombustible = tipoCombustible
+    
+    def setTipoAutomovil(self, tipoAutomovil):
+        self.tipoAutomovil = tipoAutomovil
+
+    def setNumeroPuertas(self, numeroPuertas):
+        self.numeroPuertas = numeroPuertas
+
+    def setCantidadAsientos(self, cantidadAsientos):
+        self.cantidadAsientos = cantidadAsientos
+    
+    def setVelocidadMax(self, velocidaMax):
+        self.velocidadMax = velocidaMax
+    
+    def setColor(self, color):
+        self.color = color
+    
+    def setVelocidadActual(self, velocidadActual):
+        self.velocidadActual = velocidadActual
+    
+    def acelerar(self, incrementoVelocidad):
+        if (self.velocidadActual + incrementoVelocidad < self.velocidadMax):
+            self.velocidadActual = self.velocidadActual + incrementoVelocidad
         else:
-            tiempo = distancia / self.vactual
-            print(f"Tiempo estimado: {tiempo} h")
-    def imprime_datos(self):
-        print(f'Marca: {self.marca}-{self.modelo}\nMotor: {self.motor}L\nCombustible:{self.combustible.value}\nTipo: {self.tipo.value}\nPuestas: {self.puertas}\nAsientos: {self.asientos}\nVel. Máx: {self.vmax} km/h\nColor: {self.color.value}\nVelocidad actual: {self.vactual}km/h')
-def main():
-    auto = Automovil("Toyota", 2018, 1.5 , TipoCombustible.gasolina, TipoAutomovil.SUV, 4, 5, 260, Color.negro,100)
-    auto.imprime_datos()
-    auto.acelerar(20)
-    auto.desacelerar(50)
-    auto.frenar()
+            print("No se puede incrementar a una velocidad superior a la máxima del automóvil")
+    
+    def desacelerar(self, decrementoVelocidad):
+        if ((self.velocidadActual - decrementoVelocidad) > 0):
+            self.velocidadActual = self.velocidadActual - decrementoVelocidad
+        else:
+            print("No se puede decrementar a una velocidad negativa.")
+    
+    def frenar(self):
+        self.velocidadActual = 0
+    
+    def calcularTiempoLlegada(self, distancia):
+        return distancia/self.velocidadActual
 
+    def imprimir(self):
+        print(f"Marca = {self.marca}")
+        print(f"Modelo = {self.modelo}")
+        print(f"Motor = {self.motor}")
+        print(f"Tipo de combustible = {self.tipoCombustible.value}")
+        print(f"Tipo de automóvil = {self.tipoAutomovil.value}")
+        print(f"Número de puertas = {self.numeroPuertas}")
+        print(f"Cantidad de asientos = {self.cantidadAsientos}")
+        print(f"Velocidad máxima = {self.velocidadMax}")
+        print(f"Color = {self.color.value}")
 
-if __name__ == "__main__":
-    main()
+auto1 = Automovil("Ford", 2018, 3, tipoCom.DIESEL, tipoA.EJECUTIVO, 5, 6, 250, tipoColor.NEGRO)
 
+auto1.imprimir()
+auto1.setVelocidadActual(100)
+print(f"Velocidad actual = {auto1.velocidadActual}")
+auto1.acelerar(20)
+print(f"Velocidad actual = {auto1.velocidadActual}")
+auto1.desacelerar(50)
+print(f"Velocidad actual = {auto1.velocidadActual}")
+auto1.frenar()
+print(f"Velocidad actual = {auto1.velocidadActual}")
+auto1.desacelerar(20)
